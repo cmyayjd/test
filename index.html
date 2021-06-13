@@ -7,11 +7,14 @@
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="./aframe-ar-nft.js"></script>
     <script>
+      console.log('tt1')
+      var width = window.innerWidth;
+      var height = window.innerHeight;
       window.onload = () => {                      
         navigator.geolocation.getCurrentPosition((position) => {
-          console.log('99', position.coords.latitude, position.coords.longitude)
-        document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
-      });
+          document.querySelector('a-scene').setAttribute('arjs', `sourceType: webcam; sourceWidth: ${width}; sourceHeight: ${height}; displayWidth: ${width}; displayHeight: ${height}; debugUIEnabled: false;`)
+          document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
+        });
      }
     </script>
   </head>
@@ -20,14 +23,13 @@
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
-      arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'
     >
       <a-text
         value="No markers around"
         look-at="[gps-camera]"
-        scale="75 75 75"
+        scale="5 5 5"
       ></a-text>
-      <a-box material="color: yellow" gps-entity-place="latitude: 33.3978703; longitude: 120.17859899999999" position="0 0 0"/>
+      <!-- <a-box material="color: yellow" gps-entity-place="latitude: 33.3978703; longitude: 120.17859899999999" position="0 0 0"/> -->
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
   </body>
