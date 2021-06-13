@@ -9,7 +9,7 @@
     <script>
       window.onload = () => {                      
         navigator.geolocation.getCurrentPosition((position) => {
-          console.log(position.coords.latitude, position.coords.longitude)
+          console.log('cc', position.coords.latitude, position.coords.longitude)
         document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
       });
      }
@@ -27,7 +27,7 @@
         look-at="[gps-camera]"
         scale="5 5 5"
       ></a-text>
-      <a-box material="color: yellow" gps-entity-place="latitude: 33; longitude: 120" position="0 30 0"/>
+      <a-box material="color: yellow" gps-entity-place="latitude: 33.3975497; longitude: 120.17877279999999" position="0 0 0"/>
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
   </body>
